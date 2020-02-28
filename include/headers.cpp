@@ -1,0 +1,30 @@
+void balance_read();
+void balance_setzero();
+void balance_raw();
+void balance_setup();
+void mqttcommand(String StrCommand);
+void setup_wifi() ;
+void callback(char* reedTopic, byte* payload, unsigned int length) ;
+void reconnect() ;
+void network_publish( const char *payload);
+void network_setup() ;
+void network_loop() ;
+void dump_byte_array(byte *buffer, byte bufferSize) ;
+void rfid_setup();
+void rfid_readid();
+void rfid_getid();
+void mfrc522_fast_Reset();
+void handleRFID() ;
+void rfid_setup(void);
+void rfid_loop(void);
+
+void humidity_setup();
+
+void humidityControl(bool bolForce) ;
+void humidity_activate_control();
+void humidity_deactivate_control();
+void humidity_pump_start();
+void humidity_pump_stop();
+void explain();
+  void   showError() ; 
+void callbackOTA(const char *topic, uint8_t * data, int len);
