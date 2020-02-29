@@ -4,7 +4,7 @@ void mqttcommand(String StrCommand){
 if(IsDebug){
     snprintf (msg, MSG_BUFFER_SIZE, "RECEIVED MESSAGE: %s", StrCommand.c_str());
     Serial.println(msg);
-    network_publish(msg);   
+//    network_publish(msg,"DEBUG");   
 
 }
 
@@ -125,29 +125,33 @@ void explain(){
   String MyMessage;
     MyMessage = WiFi.localIP().toString();   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
     snprintf (msg, MSG_BUFFER_SIZE, "KA-UPDATE-URL: http://%s/update", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
     MyMessage = "commands on TOPIC " + (String)mqtt_sub_topic;   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
     MyMessage = "Available Commands: balance,getid,checkhum";   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
-    MyMessage = "AC: disablehumcontrol,enablehumcontrol,startpump";   
+    MyMessage = "AC: disablehumcontrol,enablehumcontrol";   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
-    MyMessage = "AC: stoppump,setmin <float>,setmax <float>";   
+    MyMessage = "AC: startpump, stoppump";   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
+
+    MyMessage = "AC: setmin <float>,setmax <float>";   
+    snprintf (msg, MSG_BUFFER_SIZE, "KA-IP: %s", MyMessage.c_str());
+    network_publish(msg,"info");
   
     snprintf (msg, MSG_BUFFER_SIZE, "KA-Version: %s", MyVERSION.c_str());
-    network_publish(msg);
+    network_publish(msg,"info");
 
 
 }

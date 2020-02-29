@@ -89,20 +89,29 @@ void reconnect() {
   }
 }
 
-void network_publish( const char *payload){
+//const char* mqtttopic = "3d";
+void network_publish( const char *payload, const char *SubTopic){
     Serial.print("Publish message: ");
     Serial.println(payload);
-    client.publish(mqtttopic, payload);
+    String FinalTopic= (String)mqtt_pub_topic;
+    if (strlen(SubTopic)>0) {
+      FinalTopic.concat("/");
+      FinalTopic.concat(SubTopic);
+      
+    }
+    client.publish(FinalTopic.c_str(), payload);
+    //client.publish(mqtt_pub_topic, payload);
 }
 
+
 void network_setup() {
-  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  //pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.subscribe(mqtt_ota_topic);
   client.subscribe(mqtt_sub_topic);
   client.setCallback(callback);
-  network_publish("Publishing ");
+  network_publish("Publishing ","");
   
 }
 

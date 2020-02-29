@@ -4,8 +4,8 @@
 
 #include "credentials.cpp"
 
-String MyVERSION="MQTT-Hum-Balance-Master-v0.95";
-const char* host = "MQTT-Hum-Balance-Master-v0.95";
+String MyVERSION="MQTT-Hum-Balance-Master-v0.98";
+const char* host = "MQTT-Hum-Balance-Master-v0.98";
 
 unsigned long LastMoment;
 unsigned long MainLoopWork = 60000;
@@ -14,6 +14,7 @@ unsigned long MainLoopWork = 60000;
 
 const char* mqtt_server = "192.168.178.27";
 const char* mqtttopic = "3d";
+const char* mqtt_pub_topic_base = "3d";
 const char* mqtt_pub_topic = "3d";
 const char* mqtt_sub_topic = "3d/CMD";
 const char* mqtt_ota_topic = "3d/OTA";
@@ -35,8 +36,8 @@ unsigned long lastMsg = 0;
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
 String mqttmessage;
-float HumUpperLimit = 33.3;
-float HumLowerLimit = 25.7;
+float HumUpperLimit = 45.0;
+float HumLowerLimit = 28.0;
 
 /////// DEBUGs
 

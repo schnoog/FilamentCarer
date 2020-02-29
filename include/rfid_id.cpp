@@ -110,7 +110,8 @@ void handleRFID() {
   Serial.println(printHex(rfid.uid.uidByte, rfid.uid.size));
         snprintf (msg, MSG_BUFFER_SIZE, "RFID-ID: %s", printHex(rfid.uid.uidByte, rfid.uid.size).c_str());
         Serial.println(msg);
-        network_publish(msg);
+        snprintf (msg, MSG_BUFFER_SIZE, "%s", printHex(rfid.uid.uidByte, rfid.uid.size).c_str());
+        network_publish(msg,"filament/rfid");
   rfid.PICC_HaltA();
   rfid.PCD_StopCrypto1();
 }

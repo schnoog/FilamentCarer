@@ -49,29 +49,43 @@ void humidityControl(bool bolForce) {
         
         snprintf (msg, MSG_BUFFER_SIZE, "LIMITS: %.2f - %.2f", HumLowerLimit,HumUpperLimit);
         Serial.println(msg);
-        network_publish(msg);
+        snprintf (msg, MSG_BUFFER_SIZE, "%.2f", HumLowerLimit);
+        network_publish(msg,"settings/humidity/lowerlimit");
+        snprintf (msg, MSG_BUFFER_SIZE, "%.2f", HumUpperLimit);
+        network_publish(msg,"settings/humidity/upperlimit");
+
+
+
 
         String retDataH = (String)Humidity;  //Specify request destination
         snprintf (msg, MSG_BUFFER_SIZE, "HUMIDITY: %s", retDataH.c_str());
         Serial.println(msg);
-        network_publish(msg);
+        //network_publish(msg);
 
+        snprintf (msg, MSG_BUFFER_SIZE, "%s", retDataH.c_str());
+        network_publish(msg,"filament/humidity");
 
         retDataH = (String)Temperature;  //Specify request destination
         snprintf (msg, MSG_BUFFER_SIZE, "TEMPERATURE: %s", retDataH.c_str());
         Serial.println(msg);
-        network_publish(msg);
+        //network_publish(msg);
+
+        snprintf (msg, MSG_BUFFER_SIZE, "%s", retDataH.c_str());
+        network_publish(msg,"filament/temperature");
 
         retDataH = (String)PumpStatus;  //Specify request destination
         snprintf (msg, MSG_BUFFER_SIZE, "PUMP: %s", retDataH.c_str());
         Serial.println(msg);
-        network_publish(msg);
+        //network_publish(msg);
 
+        snprintf (msg, MSG_BUFFER_SIZE, "%s", retDataH.c_str());
+        network_publish(msg,"filament/pump");
         
         snprintf (msg, MSG_BUFFER_SIZE, "CONTROLSTATE: %s", ControlState.c_str());
         Serial.println(msg);
-        network_publish(msg);
-
+        //network_publish(msg);
+        snprintf (msg, MSG_BUFFER_SIZE, "%s", ControlState.c_str());
+        network_publish(msg,"filament/controlstate");
 
 
     }    
@@ -98,7 +112,8 @@ void humidity_activate_control(){
   String ControlState = "active";
   snprintf (msg, MSG_BUFFER_SIZE, "CONTROLSTATE: %s", ControlState.c_str());
   Serial.println(msg);
-  network_publish(msg);  
+  snprintf (msg, MSG_BUFFER_SIZE, "%s", ControlState.c_str());
+  network_publish(msg,"filament/controlstate");  
 }
 
 void humidity_deactivate_control(){
@@ -106,7 +121,8 @@ void humidity_deactivate_control(){
   String ControlState = "inactive";
   snprintf (msg, MSG_BUFFER_SIZE, "CONTROLSTATE: %s", ControlState.c_str());
   Serial.println(msg);
-  network_publish(msg);  
+  snprintf (msg, MSG_BUFFER_SIZE, "%s", ControlState.c_str());  
+  network_publish(msg,"filament/controlstate");  
 }
 
 void humidity_pump_start(){
@@ -115,7 +131,8 @@ void humidity_pump_start(){
     String retDataH = (String)PumpStatus;  //Specify request destination
     snprintf (msg, MSG_BUFFER_SIZE, "PUMP: %s", retDataH.c_str());
     Serial.println(msg);
-    network_publish(msg);    
+    snprintf (msg, MSG_BUFFER_SIZE, "%s", retDataH.c_str());
+    network_publish(msg,"filament/pump");    
 }
 
 void humidity_pump_stop(){
@@ -124,5 +141,6 @@ void humidity_pump_stop(){
     String retDataH = (String)PumpStatus;  //Specify request destination
     snprintf (msg, MSG_BUFFER_SIZE, "PUMP: %s", retDataH.c_str());
     Serial.println(msg);
-    network_publish(msg);
+    snprintf (msg, MSG_BUFFER_SIZE, "%s", retDataH.c_str());
+    network_publish(msg,"filament/pump");
 }
