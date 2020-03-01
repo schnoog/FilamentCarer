@@ -28,9 +28,9 @@ void humidityControl(bool bolForce) {
             previousMillis = currentMillis;
           Temperature = dht.readTemperature(); // Gets the values of the temperature
           Humidity = dht.readHumidity(); // Gets the values of the humidity 
-          String ControlState = "inactive";
+          String ControlState = "0";
           if(HumControlActive){
-              ControlState = "active";
+              ControlState = "1";
               if(Humidity > HumUpperLimit){
               digitalWrite(PumpPin, HIGH);
               PumpStatus = 1;
@@ -109,7 +109,7 @@ void humidity_setup(){
 
 void humidity_activate_control(){
   HumControlActive = true;
-  String ControlState = "active";
+  String ControlState = "1";
   snprintf (msg, MSG_BUFFER_SIZE, "CONTROLSTATE: %s", ControlState.c_str());
   Serial.println(msg);
   snprintf (msg, MSG_BUFFER_SIZE, "%s", ControlState.c_str());
@@ -118,7 +118,7 @@ void humidity_activate_control(){
 
 void humidity_deactivate_control(){
   HumControlActive = false;
-  String ControlState = "inactive";
+  String ControlState = "0";
   snprintf (msg, MSG_BUFFER_SIZE, "CONTROLSTATE: %s", ControlState.c_str());
   Serial.println(msg);
   snprintf (msg, MSG_BUFFER_SIZE, "%s", ControlState.c_str());  

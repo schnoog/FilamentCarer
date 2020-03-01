@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d96287ae0d2d2eb63eaafc402b655fa3",
+    "packages": [
+        {
+            "name": "mcfish/libmqtt",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/McFizh/libMQTT.git",
+                "reference": "0c0a5cb53390fe52b10fa8bef626152becea89c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/McFizh/libMQTT/zipball/0c0a5cb53390fe52b10fa8bef626152becea89c7",
+                "reference": "0c0a5cb53390fe52b10fa8bef626152becea89c7",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LibMQTT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pekka Harjamäki",
+                    "email": "mcfizh@gmail.com"
+                }
+            ],
+            "description": "MQTT 3.1.1 library for PHP with TLS support",
+            "keywords": [
+                "mqtt",
+                "php"
+            ],
+            "time": "2018-12-06T12:53:03+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
